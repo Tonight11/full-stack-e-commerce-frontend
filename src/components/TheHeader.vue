@@ -1,14 +1,30 @@
 <template>
-    <header class="header">
+    <header
+        class="header"
+        :class="{
+            fixed: position === 'fixed',
+        }"
+        :style="{
+            position,
+        }"
+    >
         <app-page>
             <div class="header__inner">
                 <div class="logo">T<span>H</span></div>
                 <the-navbar></the-navbar>
                 <div class="header__edge">
-                    <AdminIcon class="header__icon"/>
-                    <ThemeIcon  class="header__icon" :theme="'light'"/>
-                    <CallIcon class="header__icon"/>
-                    <CartIcon class="header__icon"/>
+                    <router-link :to="{ name: 'AdminProducts' }">
+                        <AdminIcon class="header__icon" />
+                    </router-link>
+                    <ThemeIcon
+                        class="header__icon"
+                        :theme="isDark ? 'dark' : 'light'"
+                        @click="toggleDark()"
+                    />
+                    <CallIcon class="header__icon" />
+                    <router-link :to="{ name: 'cart' }">
+                        <CartIcon class="header__icon" />
+                    </router-link>
                 </div>
             </div>
         </app-page>
@@ -16,25 +32,36 @@
 </template>
 
 <script setup>
+import AppPage from '@/UI/AppPage'
+import TheNavbar from '@/components/TheNavbar'
+import AdminIcon from '@/icons/AdminIcon'
+import CallIcon from '@/icons/CallIcon'
+import CartIcon from '@/icons/CartIcon'
+import ThemeIcon from '@/icons/ThemeIcon'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useDark, useToggle } from '@vueuse/core'
 
-import AppPage from "@/UI/AppPage"
-import TheNavbar from "@/components/TheNavbar"
-import AdminIcon from "@/icons/AdminIcon"
-import CallIcon from "@/icons/CallIcon"
-import CartIcon from "@/icons/CartIcon"
-import ThemeIcon from "@/icons/ThemeIcon"
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
+
+const route = useRoute()
+const position = computed(() => (route.name === 'home' ? 'fixed' : 'static'))
 </script>
 
 <style lang="scss">
-
 .header {
-    padding: 20px 0;
+    padding: 10px 0;
     position: fixed;
     z-index: 100;
     top: 0;
     left: 0;
     width: 100%;
     background-color: white;
+
+    &.fixed {
+        box-shadow: 0 0 5px 0.1px black;
+    }
 
     &__inner {
         display: flex;
@@ -54,14 +81,14 @@ import ThemeIcon from "@/icons/ThemeIcon"
     font-size: 48px;
 
     span {
-        color: #FFF500;
+        color: #fff500;
     }
 }
 
 .header__icon {
     svg {
-        width: 35px;
-        height: 35px;
+        width: 25px;
+        height: 25px;
         cursor: pointer;
     }
 }
@@ -79,8 +106,8 @@ import ThemeIcon from "@/icons/ThemeIcon"
         height: 0;
         opacity: 0;
         visibility: hidden;
-        background-color: #BD00FF;
-        transition: all .3s linear;
+        background-color: #bd00ff;
+        transition: all 0.3s linear;
     }
 
     &:hover {
@@ -91,5 +118,4 @@ import ThemeIcon from "@/icons/ThemeIcon"
         }
     }
 }
-
 </style>

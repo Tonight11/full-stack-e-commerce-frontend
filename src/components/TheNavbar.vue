@@ -2,38 +2,41 @@
     <nav class="nav">
         <ul class="nav__body" v-if="page === 'home'">
             <li>
-                <a href="#" class="nav__link">Trending</a>
+                <a href="#best" v-smooth-scroll class="nav__link">Trending</a>
             </li>
             <li>
-                <a href="#" class="nav__link">Advantages</a>
+                <a href="#advan" v-smooth-scroll class="nav__link"
+                    >Advantages</a
+                >
             </li>
             <li>
-                <a href="#" class="nav__link">Contact</a>
+                <a href="#contact" v-smooth-scroll="{offset: 60}" class="nav__link">Contact</a>
             </li>
             <li>
-                <router-link class="nav__link" :to="{name: 'product'}" >Product</router-link>
+                <router-link class="nav__link" :to="{ name: 'product' }"
+                    >Product</router-link
+                >
             </li>
         </ul>
         <ul class="nav__body" v-else>
             <li>
-                <router-link class="nav__link" :to="{name: 'home'}" >Back to Main</router-link>
+                <router-link class="nav__link" :to="{ name: 'home' }"
+                    >Back to Main</router-link
+                >
             </li>
         </ul>
     </nav>
 </template>
 
 <script setup>
-import {useRoute} from "vue-router";
-import {computed} from "vue";
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
 
 const route = useRoute()
 const page = computed(() => route.name)
-
-
 </script>
 
 <style lang="scss">
-
 .nav {
     &__body {
         display: flex;
@@ -54,8 +57,8 @@ const page = computed(() => route.name)
                 height: 2px;
                 opacity: 0;
                 visibility: hidden;
-                background-color: #BD00FF;
-                transition: all .3s linear;
+                background-color: #bd00ff;
+                transition: all 0.3s linear;
             }
 
             &:hover {
@@ -72,9 +75,6 @@ const page = computed(() => route.name)
         text-decoration: none;
         font-size: 18px;
         color: #000000;
-
-
     }
 }
-
 </style>

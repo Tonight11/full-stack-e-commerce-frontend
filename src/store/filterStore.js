@@ -1,15 +1,13 @@
-import {defineStore} from 'pinia'
+import { defineStore } from 'pinia'
 
 export const useFilterStore = defineStore('filter', {
     state: () => ({
         search: '',
-        range: [0,100]
+        range: [0, 100],
     }),
     getters: {
-        result: state => state.search,
-        money: state => state.range,
+        result: (state) => state.search,
+        money: (state) => state.range,
     },
-    actions: {
-
-    },
+    actions: {},
 })

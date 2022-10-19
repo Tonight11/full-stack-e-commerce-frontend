@@ -5,18 +5,24 @@
                 <div class="footer__logo logo">T<span>H</span></div>
                 <ul class="footer__link">
                     <li>
-                        <router-link to="/product" class="nav__link">Product</router-link>
+                        <router-link to="/product" class="nav__link"
+                            >Product</router-link
+                        >
                     </li>
                     <li>
-                        <router-link to="/privacy" class="nav__link nav__link-privacy">Privacy Policy</router-link>
+                        <router-link
+                            to="/privacy"
+                            class="nav__link nav__link-privacy"
+                            >Privacy policy</router-link
+                        >
                     </li>
-
                 </ul>
                 <a
                     class="footer__author"
                     href="https://github.com/Tonight11"
                     target="_blank"
-                >Created by @Bayastan(Tonight)</a>
+                    >Created by @Bayastan(Tonight)</a
+                >
             </div>
         </app-page>
     </footer>
@@ -27,9 +33,9 @@ import AppPage from '@/UI/AppPage'
 </script>
 
 <style lang="scss">
-
 .footer {
-    padding: 50px 0;
+    background: white;
+    padding: 15px 0;
     margin-top: auto;
 
     &__inner {
@@ -52,8 +58,6 @@ import AppPage from '@/UI/AppPage'
 }
 
 .nav__link-privacy {
-    color: #4D4D4D;
+    color: #4d4d4d;
 }
-
-
 </style>

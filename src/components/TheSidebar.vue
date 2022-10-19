@@ -1,21 +1,24 @@
 <template>
     <aside class="sidebar">
-        <div class="sidebar__title">Filter</div>
-        <request-sidebar></request-sidebar>
+        <div class="sidebar__title">{{ title }}</div>
+        <slot></slot>
     </aside>
 </template>
 
 <script setup>
-import RequestSidebar from "@/components/request/RequestSidebar"
+import { defineProps } from 'vue'
+
+defineProps({
+    title: String,
+})
 </script>
 
 <style lang="scss">
-
 .sidebar {
     max-width: 280px;
     padding: 30px;
-    background: #FFFFFF;
-    box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.10);
+    background: #ffffff;
+    box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.1);
 
     @media screen and (max-width: 900px) {
         max-width: 100%;
@@ -27,5 +30,4 @@ import RequestSidebar from "@/components/request/RequestSidebar"
         margin-bottom: 50px;
     }
 }
-
 </style>

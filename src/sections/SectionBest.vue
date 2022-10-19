@@ -7,8 +7,11 @@
                     text="Fashion that we provide. there are several stunning outfit that most likely by our client and you can buy one of them"
                 ></app-title>
                 <div class="best__grid grid">
-                    <request-grid v-for="(item, index) in gridItems" :key="item.id" :item="[item, index]"></request-grid>
-
+                    <request-grid
+                        v-for="(item, index) in gridItems"
+                        :key="item.id"
+                        :item="[item, index]"
+                    ></request-grid>
                 </div>
             </div>
         </app-page>
@@ -16,50 +19,46 @@
 </template>
 
 <script setup>
-
-import { v4 as uuidv4 } from 'uuid';
-import AppPage from "@/UI/AppPage"
-import AppTitle from "@/UI/AppTitle"
-import RequestGrid from "@/components/request/RequestGrid"
-
+import { v4 as uuidv4 } from 'uuid'
+import AppPage from '@/UI/AppPage'
+import AppTitle from '@/UI/AppTitle'
+import RequestGrid from '@/components/request/RequestGrid'
 
 const gridItems = [
     {
         id: uuidv4(),
         name: 'coat',
         text: 'dwa dwaio awdin adwni awdnoaw ndawawd dawnl',
-        img: '../../assets/img/best/1.jpg'
-
+        img: '../../assets/img/best/1.jpg',
     },
     {
         id: uuidv4(),
         name: 'best',
         text: 'dwa dwaio awdin l',
-        img: '../../assets/img/best/2.jpg'
-
+        img: '../../assets/img/best/2.jpg',
     },
     {
         id: uuidv4(),
         name: 'shoes',
         text: 'dwa dwaio 123',
-        img: '../../assets/img/best/3.jpg'
-
+        img: '../../assets/img/best/3.jpg',
     },
     {
         id: uuidv4(),
         name: 'leaf',
         text: 'dwa',
-        img: '../../assets/img/best/4.jpg'
-
+        img: '../../assets/img/best/4.jpg',
     },
 ]
 </script>
 
 <style lang="scss">
-
-
 .best {
     padding-top: 140px;
+
+    @media screen and (max-width: 827px) {
+        padding-top: 50px;
+    }
 }
 
 .grid {
@@ -82,7 +81,7 @@ const gridItems = [
         @media screen and (max-width: 695px) {
             height: 350px;
         }
-        
+
         @media screen and (min-width: 1040px) {
             &:nth-child(4n + 1) {
                 grid-column: span 2;
@@ -116,17 +115,18 @@ const gridItems = [
         opacity: 0;
         visibility: hidden;
     }
+
     &__name {
         font-weight: 600;
         font-size: 24px;
-        color: #FFFFFF;
+        color: #ffffff;
         margin-bottom: 5px;
     }
 
     &__text {
         font-weight: 400;
         font-size: 16px;
-        color: #FFFFFF;
+        color: #ffffff;
         margin-bottom: 10px;
     }
 }

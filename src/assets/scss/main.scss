@@ -1,0 +1,184 @@
+// normalize
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: inherit; /* 1 */
+    font-size: 100%; /* 1 */
+    line-height: 1.15; /* 1 */
+    margin: 0; /* 2 */
+}
+
+/**
+  * Show the overflow in IE.
+  * 1. Show the overflow in Edge.
+  */
+
+button,
+input {
+    /* 1 */
+    overflow: visible;
+}
+
+/**
+  * Remove the inheritance of text transform in Edge, Firefox, and IE.
+  * 1. Remove the inheritance of text transform in Firefox.
+  */
+
+button,
+select {
+    /* 1 */
+    text-transform: none;
+    outline: none;
+    cursor: pointer;
+    border: none;
+}
+
+/**
+  * Correct the inability to style clickable types in iOS and Safari.
+  */
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+    -webkit-appearance: button;
+}
+
+// img
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+//
+
+a {
+    display: block;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.wrapper {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+}
+
+html.dark {
+    background: #252525;
+    color: white;
+
+    .footer__author {
+        color: white;
+    }
+
+    .sidebar {
+        background-color: #252525;
+        box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+        span {
+            color: #bd00ff;
+        }
+    }
+
+    .first__text {
+        span {
+            color: #fff500;
+        }
+    }
+
+    text {
+        fill: white;
+    }
+
+    .modal__content {
+        background-color: #252525;
+    }
+
+    input {
+        border-color: white;
+        color: white;
+
+        &::placeholder {
+            color: white;
+        }
+
+        &:focus {
+            border-color: #fff500;
+        }
+    }
+
+    .header,
+    .footer,
+    .product-item__item {
+        background-color: #252525;
+    }
+
+    .product-item__info {
+        color: white;
+    }
+
+    .nav__link {
+        color: white;
+    }
+
+    .btn {
+        background-color: #fff500;
+        color: black;
+
+        &:disabled {
+            background-color: #fff993;
+        }
+    }
+
+    .first__bg {
+        &::before {
+            background-color: #bd00ff;
+        }
+    }
+
+    .single-product {
+        &:before {
+            background-color: #bd00ff;
+        }
+    }
+
+    .header__icon {
+        color: black;
+        fill: black;
+    }
+}
+
+small {
+    color: red;
+}
+
+.invalid {
+    border-color: #ff3b3b !important;
+}

@@ -2,9 +2,29 @@
     <main class="main">
         <div class="admin">
             <app-page>
+                <a href="#" @click.prevent="logOut">log_out</a>
+                <router-link to="/">Main</router-link>
                 <div class="admin__inner">
-                    <the-sidebar title="DASHBOARD"></the-sidebar>
-                    <admin-products></admin-products>
+                    <the-sidebar title="DASHBOARD">
+                        <ul>
+                            <router-link
+                                class="admin__link"
+                                :to="{ name: 'AdminProducts' }"
+                                >Products</router-link
+                            >
+                            <router-link
+                                class="admin__link"
+                                :to="{ name: 'AdminAddProduct' }"
+                                >Add product</router-link
+                            >
+                            <router-link
+                                class="admin__link"
+                                :to="{ name: 'AdminAddUser' }"
+                                >Add helper</router-link
+                            >
+                        </ul>
+                    </the-sidebar>
+                    <router-view></router-view>
                 </div>
             </app-page>
         </div>
@@ -12,26 +32,50 @@
 </template>
 
 <script setup>
-
-import AdminProducts from "@/components/AdminProducts"
 import AppPage from '@/UI/AppPage'
-import TheSidebar from "@/components/TheSidebar"
+import TheSidebar from '@/components/TheSidebar'
+import { useAuthStore } from '@/store/authStore'
+import { useRouter } from 'vue-router'
 
-import {useDark} from '@vueuse/core'
+import { useDark } from '@vueuse/core'
 
 useDark()
 
-
+const router = useRouter()
+const authStore = useAuthStore()
+const logOut = async () => {
+    await authStore.logOut()
+    router.push('/')
+}
 </script>
 
 <style lang="scss">
-
-.admin {
-    padding-top: 50px;
-    &__inner {
-        display: flex;
-        gap: 50px;
+html.dark {
+    .admin__link {
+        color: white;
     }
 }
 
+.admin {
+    &__inner {
+        min-height: 100vh;
+        padding: 50px 0;
+        display: flex;
+        gap: 50px;
+    }
+
+    &__link {
+        color: black;
+        margin-bottom: 20px;
+        font-size: 18px;
+
+        &.router-link-exact-active {
+            color: #8f8f8f;
+        }
+
+        &:hover {
+            color: #8f8f8f;
+        }
+    }
+}
 </style>
