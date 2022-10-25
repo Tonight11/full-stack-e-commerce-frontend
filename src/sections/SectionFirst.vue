@@ -12,7 +12,12 @@
                         <br />
                         will help you look fresh and fashionable
                     </div>
-                    <app-button text="Explore" big ref="btn"></app-button>
+                    <app-button
+                        text="Explore"
+                        ref="btn"
+                        href="#catalog"
+                        v-smooth-scroll
+                    ></app-button>
                 </div>
                 <div class="first__bg">
                     <img src="../assets/img/girl.png" alt="girl" ref="img" />

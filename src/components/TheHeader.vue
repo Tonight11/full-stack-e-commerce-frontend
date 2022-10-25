@@ -21,7 +21,9 @@
                         :theme="isDark ? 'dark' : 'light'"
                         @click="toggleDark()"
                     />
-                    <CallIcon class="header__icon" />
+                    <a href="tel:79067886574">
+                        <CallIcon class="header__icon" />
+                    </a>
                     <router-link :to="{ name: 'cart' }">
                         <CartIcon class="header__icon" />
                     </router-link>

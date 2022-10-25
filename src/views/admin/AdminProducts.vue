@@ -63,7 +63,7 @@ const productStore = useProductStore()
 const products = computed(() => productStore.products)
 
 onMounted(async () => {
-    await productStore.getProducts()
+    await productStore.getAdminProducts()
 })
 
 const deleteProduct = async (id) => {

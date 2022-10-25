@@ -3,14 +3,31 @@
         <div class="content-modal__title">{{ title }}</div>
 
         <form class="modal-form">
-            <app-input v-model.trim="name" type="text" place="Name"></app-input>
             <app-input
-                v-model.number="phone"
-                type="tel"
-                place="Phone number"
+                v-model.trim="name"
+                type="text"
+                place="Name"
+                required
             ></app-input>
-            <app-input v-model="email" type="email" place="Email"></app-input>
-            <app-button class="modal-form__btn" text="Send"></app-button>
+            <MazPhoneNumberInput
+                v-model="phone"
+                default-country-code="US"
+                color="primary"
+                :preferred-countries="['RU', 'US', 'KG']"
+                @update="results = $event"
+                :success="results?.isValid"
+            />
+            <app-input
+                v-model="email"
+                type="email"
+                place="Email"
+                required
+            ></app-input>
+            <app-button
+                class="modal-form__btn"
+                text="Send"
+                :disabled="!results?.isValid"
+            ></app-button>
         </form>
     </div>
 </template>
@@ -19,6 +36,7 @@
 import AppInput from '@/UI/AppInput'
 import { defineProps, ref } from 'vue'
 import AppButton from '@/UI/AppButton'
+import MazPhoneNumberInput from 'maz-ui/components/MazPhoneNumberInput'
 
 defineProps({
     title: String,
@@ -26,6 +44,7 @@ defineProps({
 
 const name = ref('')
 const phone = ref()
+const results = ref()
 const email = ref('')
 </script>
 

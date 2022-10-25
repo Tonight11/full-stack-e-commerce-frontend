@@ -34,11 +34,11 @@
 import { defineProps, ref, onMounted } from 'vue'
 import { gsap } from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import { useProductStore } from '@/store/productStore'
+
 
 gsap.registerPlugin(ScrollTrigger)
 
-const productStore = useProductStore()
+
 
 defineProps({
     title: {
@@ -65,7 +65,7 @@ const secText = ref()
 const secLink = ref()
 
 onMounted(async () => {
-    await productStore.getProducts()
+    
 
     const productTl = gsap.timeline({
         scrollTrigger: {

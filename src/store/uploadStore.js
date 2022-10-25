@@ -21,10 +21,8 @@ export const useUploadStore = defineStore('upload', {
         deleteImage() {
             this.upload = null
             let preview = document.getElementById('file-ip-1-preview')
-            console.log(preview)
             preview.src = ''
             preview.style.display = 'none'
-            console.log(preview)
         },
     },
 })

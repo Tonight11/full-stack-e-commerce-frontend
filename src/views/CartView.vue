@@ -3,35 +3,7 @@
         <div class="cart-page">
             <app-page>
                 <div class="cart-page__inner">
-                    <form
-                        action="#"
-                        class="check"
-                        v-if="cartStore.products?.length"
-                    >
-                        <div class="check__title">Place an order</div>
-                        <app-input place="Your name" type="text"></app-input>
-                        <MazPhoneNumberInput
-                            v-model="phoneNumber"
-                            default-country-code="US"
-                            color="primary"
-                            :preferred-countries="['RU', 'US', 'KG']"
-                            @update="results = $event"
-                            :success="results?.isValid"
-                        />
-                        <app-input place="Email" type="email"></app-input>
-                        <app-input place="Address" type="text"></app-input>
-
-                        <div class="pay-control">
-                            <div class="pay-control__text">
-                                Choose a payment method
-                            </div>
-                            <MazRadioButtons
-                                v-model="selected"
-                                :options="options"
-                            />
-                        </div>
-                        <app-button text="Order"></app-button>
-                    </form>
+                    <request-cart-form></request-cart-form>
                     <request-cart></request-cart>
                 </div>
             </app-page>
@@ -41,33 +13,8 @@
 
 <script setup>
 import AppPage from '@/UI/AppPage'
-import AppInput from '@/UI/AppInput'
-import AppButton from '@/UI/AppButton'
+import RequestCartForm from '@/components/request/RequestCartForm.vue'
 import RequestCart from '@/components/request/RequestCart'
-import { ref } from 'vue'
-import MazPhoneNumberInput from 'maz-ui/components/MazPhoneNumberInput'
-import MazRadioButtons from 'maz-ui/components/MazRadioButtons'
-import { useCartStore } from '@/store/cartStore'
-
-const cartStore = useCartStore()
-const phoneNumber = ref()
-const results = ref()
-const selected = ref('')
-
-const options = ref([
-    {
-        value: '1',
-        label: 'By bank card',
-    },
-    {
-        value: '2',
-        label: 'money transfer',
-    },
-    {
-        value: '3',
-        label: 'Cash on hand',
-    },
-])
 </script>
 
 <style lang="scss">

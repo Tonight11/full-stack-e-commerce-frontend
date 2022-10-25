@@ -4,7 +4,10 @@
         <app-page>
             <div class="admin-change__in">
                 <h2>Change the product</h2>
-                <request-admin-item :item="product" btnText="Change"></request-admin-item>
+                <request-admin-item
+                    :item="product"
+                    btnText="Change"
+                ></request-admin-item>
             </div>
         </app-page>
     </div>
@@ -12,6 +15,7 @@
 
 <script setup>
 import { defineProps, onMounted, ref } from 'vue'
+
 import { useProductStore } from '@/store/productStore'
 import { useDark } from '@vueuse/core'
 import AppPage from '@/UI/AppPage'
@@ -23,6 +27,7 @@ useDark()
 const props = defineProps(['id'])
 const productStore = useProductStore()
 const product = ref('')
+
 
 onMounted(async () => {
     const item = await productStore.getOneProduct(props.id)

@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import axios from '@/axios/request'
+import { useAlertStore } from './alertStore'
 
 const TOKEN = 'access-token'
 
@@ -24,17 +25,14 @@ export const useAuthStore = defineStore('auth', {
                 this.auth = null
                 localStorage.removeItem(TOKEN)
             } catch (e) {
-                console.log(e)
                 throw new Error()
             }
         },
         async logIn(payload) {
             try {
                 const { data } = await axios.post('/auth/login', payload)
-                console.log(data)
                 this.setToken(data)
             } catch (e) {
-                console.log(e.response.data.message)
                 throw new Error()
             }
         },
@@ -45,10 +43,20 @@ export const useAuthStore = defineStore('auth', {
                         Authorization: `Bearer ${this.auth}`,
                     },
                 })
-                console.log('sucess!!')
             } catch (e) {
-                console.log(e.response.data.message)
                 throw new Error()
+            }
+        },
+        async order(payload) {
+            const alert = useAlertStore()
+            try {
+                await axios.post('/auth/order', payload)
+                alert.setMsg({
+                    value: `Success!!! wait for a couple of minute. A moderator will call you back!`,
+                    type: 'success',
+                })
+            } catch (error) {
+                console.log(error)
             }
         },
     },

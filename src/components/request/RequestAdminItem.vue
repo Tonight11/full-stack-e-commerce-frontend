@@ -64,6 +64,8 @@ import { defineProps, ref } from 'vue'
 import { useUploadStore } from '@/store/uploadStore'
 import { useProductStore } from '@/store/productStore'
 import { computed } from '@vue/reactivity'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 const upload = useUploadStore()
 const productStore = useProductStore()
@@ -97,6 +99,7 @@ const update = async () => {
         price: price.value,
         picture: picture.value,
     })
+    router.push({ name: 'AdminProducts' })
 }
 </script>
 

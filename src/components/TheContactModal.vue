@@ -1,6 +1,6 @@
 <template>
-    <div class="modal" ref="defModal">
-        <div class="modal__content">
+    <div class="modal-contact" ref="defModal">
+        <div class="modal-contact__content">
             <request-modal title="Callback"></request-modal>
         </div>
     </div>
@@ -40,7 +40,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-.modal {
+.modal-contact {
     max-width: 470px;
 
     @media screen and (max-width: 992px) {

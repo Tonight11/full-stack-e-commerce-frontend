@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView'
 import { useAuthStore } from '@/store/authStore'
+import { useAlertStore } from '@/store/alertStore'
 
 const routes = [
     {
@@ -92,6 +93,8 @@ router.beforeEach((to, from, next) => {
 
     const auth = to.meta.auth
     const authStore = useAuthStore()
+    const alert = useAlertStore()
+    alert.clearMsg()
 
     if (auth && authStore.isAuth) {
         next()

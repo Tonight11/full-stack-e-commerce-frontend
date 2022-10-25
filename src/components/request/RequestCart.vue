@@ -1,7 +1,11 @@
 <template>
-    <div class="cart" v-if="cartItems?.length">
+    <div class="cart" v-if="cartSum.cartItems.value?.length">
         <div class="cart__row">
-            <div class="cart__item" v-for="item in cartItems" :key="item._id">
+            <div
+                class="cart__item"
+                v-for="item in cartSum.cartItems.value"
+                :key="item._id"
+            >
                 <div class="cart__info">
                     <div class="cart__name">{{ item.name }}</div>
                     <div class="cart__count">
@@ -29,7 +33,7 @@
         <div class="cart-total">
             <div class="cart-total__text">Total</div>
             <div class="cart__price">
-                <div class="cart__price-item">{{ total }}</div>
+                <div class="cart__price-item">{{ cartSum.total.value }}</div>
                 <span>$</span>
             </div>
         </div>
@@ -38,24 +42,17 @@
 </template>
 
 <script setup>
-import { computed, onUpdated } from 'vue'
+import { onUpdated } from 'vue'
 import MazInputNumber from 'maz-ui/components/MazInputNumber'
-import { useCartStore } from '@/store/cartStore'
+import { useCartSum } from '@/use/useCartTotalSum'
 
-const cartStore = useCartStore()
-const cartItems = computed(() => cartStore.products)
 const server = process.env.VUE_APP_SERVER
-
-const total = computed(() => {
-    return cartItems.value.reduce((acc, item) => {
-        return acc + item.count * +item.price
-    }, 0)
-})
+const cartSum = useCartSum()
 
 onUpdated(() => {
-    let deletedItem = cartItems.value.find((item) => item.count === 0)
+    let deletedItem = cartSum.cartItems.value.find((item) => item.count === 0)
     if (deletedItem !== undefined) {
-        cartStore.deleteFromCart(deletedItem)
+        cartSum.cartStore.deleteFromCart(deletedItem)
         deletedItem = undefined
     }
 })

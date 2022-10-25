@@ -18,8 +18,6 @@ export function useAuthAdmin(submit) {
     const onSubmit = handleSubmit(async (form) => {
         try {
             await submit(form)
-            email.value = ''
-            password.value = ''
         } catch (e) {
             email.value = ''
             password.value = ''

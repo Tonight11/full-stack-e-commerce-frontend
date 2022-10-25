@@ -33,10 +33,13 @@ defineProps({
 
 <style lang="scss">
 .btn {
+    display: inline-block;
     color: white;
     position: relative;
     background-color: #bd00ff;
+    text-decoration: none;
 
+    cursor: pointer;
     padding: 0.6em 2.8em;
 
     &:disabled {

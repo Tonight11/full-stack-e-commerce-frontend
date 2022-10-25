@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
+import { useAlertStore } from './alertStore'
 import axios from '@/axios/request'
-import { useAuthStore } from './authStore'
 
 export const useProductStore = defineStore('product', {
     state: () => ({
@@ -11,14 +11,17 @@ export const useProductStore = defineStore('product', {
     },
     actions: {
         async createProduct(info) {
+            const alert = useAlertStore()
             // get token so we can check the authorization
-            const token = useAuthStore().token
             try {
                 const { data } = await axios.post('/product', info, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        Authorization: `Bearer ${token}`,
                     },
+                })
+                alert.setMsg({
+                    value: `The ${data.category} ${data.name} added`,
+                    type: 'success',
                 })
                 return data
             } catch (e) {
@@ -33,6 +36,14 @@ export const useProductStore = defineStore('product', {
                 console.log(e)
             }
         },
+        async getAdminProducts() {
+            try {
+                const { data } = await axios.get('/admin-product')
+                this.items = data
+            } catch (e) {
+                console.log(e)
+            }
+        },
         async getOneProduct(id) {
             try {
                 const { data } = await axios.get(`/product/${id}`)
@@ -42,30 +53,35 @@ export const useProductStore = defineStore('product', {
             }
         },
         async updateProduct(info) {
-            const token = useAuthStore().token
+            const alert = useAlertStore()
             try {
                 const { data } = await axios.put('/product', info, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        Authorization: `Bearer ${token}`,
                     },
                 })
-                console.log(data)
+                alert.setMsg({
+                    value: `The ${data.category} ${data.name} succesfully updated`,
+                    type: 'success',
+                })
                 return data
             } catch (e) {
                 console.log(e)
             }
         },
         async deleteProduct(id) {
-            const token = useAuthStore().token
+            const alert = useAlertStore()
             try {
                 const { data } = await axios.delete(`/product/${id}`, {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        Authorization: `Bearer ${token}`,
                     },
                 })
                 this.items = this.items.filter((i) => i._id !== data._id)
+                alert.setMsg({
+                    value: `The ${data.category} ${data.name} succesfully deleted`,
+                    type: 'success',
+                })
                 return data
             } catch (e) {
                 console.log(e)

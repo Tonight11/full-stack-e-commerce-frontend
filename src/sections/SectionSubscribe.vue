@@ -7,8 +7,21 @@
                     just by clicking the button
                 </div>
                 <div class="sub__btn">
-                    <app-button text="Subscribe" small></app-button>
+                    <app-button
+                        text="Subscribe"
+                        small
+                        @click="visibleModal = true"
+                    ></app-button>
                 </div>
+                <teleport to="body">
+                    <app-popup
+                        @close="visibleModal = false"
+                        :visible="visibleModal"
+                    >
+                        <app-input place="Email"></app-input>
+                        <app-button text="Subscribe"></app-button>
+                    </app-popup>
+                </teleport>
             </div>
         </div>
     </div>
@@ -16,6 +29,11 @@
 
 <script setup>
 import AppButton from '@/UI/AppButton'
+import AppInput from '@/UI/AppInput.vue'
+import AppPopup from '@/UI/AppPopup.vue'
+import { ref } from 'vue'
+
+const visibleModal = ref(false)
 </script>
 
 <style lang="scss">

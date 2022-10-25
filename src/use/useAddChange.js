@@ -47,11 +47,6 @@ export function useAddChange() {
                 ...form,
             })
             router.push({ name: 'AdminProducts' })
-            name.value = ''
-            category.value = ''
-            price.value = ''
-            size.value = ''
-            desc.value = ''
         } catch (e) {
             name.value = ''
             category.value = ''
