@@ -82,18 +82,6 @@
             stroke-width="2"
         />
 
-        <circle
-            :class="{
-                circle: ($route.name = 'home'),
-            }"
-            class="circle5"
-            cx="75.5"
-            cy="81"
-            r="36.5"
-            fill="#FFF500"
-            stroke="black"
-            stroke-width="2"
-        />
         <text
             :class="{
                 'text-svg': ($route.name = 'home'),
@@ -162,25 +150,11 @@
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
     >
-        <path
-            ref="mainLineMobile"
-            d="M204 12V994"
-            stroke="#BD00FF"
-            stroke-width="5"
-        />
+        <path d="M204 12V994" stroke="#BD00FF" stroke-width="5" />
         <path d="M665 319L0 319" stroke="black" />
         <path d="M665 544L0 544" stroke="black" />
         <path d="M665 994L0 994" stroke="black" />
         <path d="M665 769L0 769" stroke="black" />
-        <circle
-            class="main-mobile-circle"
-            cx="324"
-            cy="50"
-            r="49"
-            fill="#FFF500"
-            stroke="black"
-            stroke-width="2"
-        />
         <circle
             :class="{
                 circle: ($route.name = 'home'),
@@ -297,28 +271,15 @@
 import { onMounted, ref } from 'vue'
 import { useMediaQuery } from '@vueuse/core'
 import { useDesktopAnim } from '@/use/useDesktopAnim'
-import { useTableAnim } from '@/use/useTableAnim'
 
 const isLargeScreen = useMediaQuery('(min-width: 768px)')
 const circle1 = ref()
 const circle2 = ref()
 const circle3 = ref()
 const circle4 = ref()
-const mainLine = ref()
-const mainLineMobile = ref()
 
 onMounted(() => {
-    if (isLargeScreen.value) {
-        useDesktopAnim(
-            mainLine.value,
-            circle1.value,
-            circle2.value,
-            circle3.value,
-            circle4.value
-        )
-    } else {
-        useTableAnim(mainLineMobile.value)
-    }
+    useDesktopAnim(circle1.value, circle2.value, circle3.value, circle4.value)
 })
 </script>
 
@@ -329,18 +290,8 @@ onMounted(() => {
     height: auto;
 }
 
-.circle,
-.main-mobile-circle {
-    opacity: 0;
-}
-
 .circle {
     cursor: pointer;
-    visibility: hidden;
-}
-
-.circle5 {
-    pointer-events: none;
 }
 
 .mobile-group {
