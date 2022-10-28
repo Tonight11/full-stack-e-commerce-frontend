@@ -38,6 +38,8 @@ export function useProductItem() {
     )
 
     const items = computed(() => productStore.products)
+    const allItems = computed(() => productStore.allProducts)
+    console.log(allItems.value)
 
     // when we leave the product page all filter settings in store backs to default
     const beforeLeave = onBeforeRouteLeave((to) => {
@@ -55,5 +57,6 @@ export function useProductItem() {
         product,
         items,
         beforeLeave,
+        allItems,
     }
 }

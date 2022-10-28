@@ -8,7 +8,12 @@
 
 <script setup></script>
 
-<style scoped>
+<style lang="scss" scoped>
+html.dark {
+    .lds-ring div {
+        border-color: #fff;
+    }
+}
 .lds-ring {
     display: inline-block;
     position: relative;
@@ -22,10 +27,10 @@
     width: 64px;
     height: 64px;
     margin: 8px;
-    border: 8px solid #fff;
+    border: 8px solid black;
     border-radius: 50%;
     animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #fff transparent transparent transparent;
+    border-color: black transparent transparent transparent;
 }
 .lds-ring div:nth-child(1) {
     animation-delay: -0.45s;

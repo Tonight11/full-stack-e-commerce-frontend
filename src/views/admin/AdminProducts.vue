@@ -60,7 +60,7 @@ import AppLoader from '@/UI/AppLoader.vue'
 
 const server = process.env.VUE_APP_SERVER
 const productStore = useProductStore()
-const products = computed(() => productStore.products)
+const products = computed(() => productStore.allProducts)
 
 onMounted(async () => {
     await productStore.getAdminProducts()

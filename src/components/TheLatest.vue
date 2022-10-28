@@ -61,7 +61,6 @@
 <script setup>
 import AppButton from '@/UI/AppButton'
 import { useProductItem } from '@/use/useProduct'
-
 import { computed } from 'vue'
 import { useMediaQuery } from '@vueuse/core'
 
@@ -71,12 +70,12 @@ const productUse = useProductItem()
 
 const server = process.env.VUE_APP_SERVER
 
-const product = computed(() => productUse.items)
+const product = computed(() => productUse.allItems)
 const total = computed(() => {
-    if (isLargeScreen) {
-        return 6
+    if (isLargeScreen.value) {
+        return 8
     } else {
-        return 3
+        return 4
     }
 })
 </script>

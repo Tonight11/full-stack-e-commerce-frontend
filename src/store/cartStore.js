@@ -17,7 +17,6 @@ export const useCartStore = defineStore('cart', {
             }
         },
         deleteFromCart(product) {
-            console.log(product)
             if (product.inCart) {
                 product.inCart = false
                 product.count = 0

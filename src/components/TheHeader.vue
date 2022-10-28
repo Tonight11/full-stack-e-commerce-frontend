@@ -49,6 +49,7 @@ const toggleDark = useToggle(isDark)
 
 const route = useRoute()
 const position = computed(() => (route.name === 'home' ? 'fixed' : 'static'))
+
 </script>
 
 <style lang="scss">

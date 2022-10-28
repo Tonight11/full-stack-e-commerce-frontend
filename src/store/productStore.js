@@ -1,13 +1,18 @@
 import { defineStore } from 'pinia'
 import { useAlertStore } from './alertStore'
+import { useLoaderStore } from './loadStore'
 import axios from '@/axios/request'
 
 export const useProductStore = defineStore('product', {
     state: () => ({
         items: [],
+        allItems: [],
+        total: 0,
+        page: 1,
     }),
     getters: {
         products: (state) => state.items,
+        allProducts: (state) => state.allItems,
     },
     actions: {
         async createProduct(info) {
@@ -29,17 +34,25 @@ export const useProductStore = defineStore('product', {
             }
         },
         async getProducts() {
+            const load = useLoaderStore()
             try {
-                const { data } = await axios.get('/product')
-                this.items = data
+                load.load = true
+                const { data } = await axios.get(
+                    `/product?page=${this.page}&limit=6`
+                )
+                this.items = data.results
+                this.total = data.totalProducts
+                this.allItems = data.allProducts
             } catch (e) {
                 console.log(e)
+            } finally {
+                load.load = false
             }
         },
         async getAdminProducts() {
             try {
                 const { data } = await axios.get('/admin-product')
-                this.items = data
+                this.allItems = data.allProducts
             } catch (e) {
                 console.log(e)
             }
@@ -77,7 +90,7 @@ export const useProductStore = defineStore('product', {
                         'Content-Type': 'multipart/form-data',
                     },
                 })
-                this.items = this.items.filter((i) => i._id !== data._id)
+                this.allItems = this.allItems.filter((i) => i._id !== data._id)
                 alert.setMsg({
                     value: `The ${data.category} ${data.name} succesfully deleted`,
                     type: 'success',

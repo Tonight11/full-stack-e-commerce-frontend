@@ -1,4 +1,5 @@
 <template>
+	<!-- SVG for dekstop ver -->
     <svg
         v-if="isLargeScreen"
         class="advantage__anim"
@@ -37,7 +38,7 @@
             class="circle1"
             cx="927.5"
             cy="257.5"
-            r="30"
+            r="40"
             fill="#FFF500"
             stroke="black"
             stroke-width="2"
@@ -50,7 +51,7 @@
             class="circle2"
             cx="556.5"
             cy="403"
-            r="30"
+            r="40"
             fill="#FFF500"
             stroke="black"
             stroke-width="2"
@@ -63,7 +64,7 @@
             class="circle4"
             cx="37.5"
             cy="568"
-            r="30"
+            r="40"
             fill="#FFF500"
             stroke="black"
             stroke-width="2"
@@ -76,7 +77,7 @@
             class="circle3"
             cx="958.5"
             cy="705"
-            r="30"
+            r="40"
             fill="#FFF500"
             stroke="black"
             stroke-width="2"
@@ -143,6 +144,7 @@
             <tspan x="46" y="696.17">Feedback</tspan>
         </text>
     </svg>
+	<!-- SVG for mobile ver -->
     <svg
         v-else
         class="mobile__anim"

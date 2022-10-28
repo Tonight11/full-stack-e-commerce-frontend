@@ -9,6 +9,7 @@
                     link-text="see all->"
                 ></app-title>
                 <div class="product__main">
+                    {{ load.loaded }}
                     <loading-product
                         v-if="load.loaded === true"
                     ></loading-product>
