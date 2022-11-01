@@ -1,5 +1,5 @@
 <template>
-	<!-- SVG for dekstop ver -->
+    <!-- SVG for dekstop ver -->
     <svg
         v-if="isLargeScreen"
         class="advantage__anim"
@@ -144,7 +144,7 @@
             <tspan x="46" y="696.17">Feedback</tspan>
         </text>
     </svg>
-	<!-- SVG for mobile ver -->
+    <!-- SVG for mobile ver -->
     <svg
         v-else
         class="mobile__anim"
@@ -302,7 +302,6 @@ onMounted(() => {
 }
 
 .text-svg {
-    opacity: 0;
     @media screen and (max-width: 768px) {
         font-size: 24px;
     }

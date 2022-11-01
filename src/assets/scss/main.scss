@@ -77,6 +77,10 @@ body {
     min-height: 100vh;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
+
+    &.lock {
+        overflow: hidden;
+    }
 }
 
 .wrapper {

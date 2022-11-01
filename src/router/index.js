@@ -89,7 +89,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    window.scrollTo(0, 0)
+    if (to.name) {
+        window.scrollTo(0, 0)
+    }
 
     const auth = to.meta.auth
     const authStore = useAuthStore()

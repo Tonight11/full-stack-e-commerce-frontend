@@ -42,6 +42,11 @@ import AppPage from '@/UI/AppPage'
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+		@media screen and (max-width: 768px) {
+			flex-direction: column;
+			gap: 10px;
+		}
     }
 
     &__link {

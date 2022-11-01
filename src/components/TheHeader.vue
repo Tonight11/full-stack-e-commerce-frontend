@@ -11,7 +11,10 @@
         <app-page>
             <div class="header__inner">
                 <div class="logo">T<span>H</span></div>
-                <the-navbar></the-navbar>
+                <the-navbar
+                    :isActive="burger.isActive.value"
+                    @closeMenu="closeMenu"
+                ></the-navbar>
                 <div class="header__edge">
                     <router-link :to="{ name: 'AdminProducts' }">
                         <AdminIcon class="header__icon" />
@@ -28,6 +31,10 @@
                         <CartIcon class="header__icon" />
                     </router-link>
                 </div>
+                <app-burger
+                    :isActive="burger.isActive.value"
+                    @click="burger.toggle"
+                ></app-burger>
             </div>
         </app-page>
     </header>
@@ -40,16 +47,34 @@ import AdminIcon from '@/icons/AdminIcon'
 import CallIcon from '@/icons/CallIcon'
 import CartIcon from '@/icons/CartIcon'
 import ThemeIcon from '@/icons/ThemeIcon'
-import { computed } from 'vue'
+import AppBurger from '@/UI/AppBurger.vue'
+import { computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useDark, useToggle } from '@vueuse/core'
+import { useMobileBurger } from '@/use/useBurger'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
+const burger = useMobileBurger()
 
 const route = useRoute()
 const position = computed(() => (route.name === 'home' ? 'fixed' : 'static'))
 
+const closeMenu = () => {
+    if (burger.isActive.value === true) {
+        burger.toggle()
+    }
+}
+
+onMounted(() => {
+    document.querySelectorAll('a').forEach((i) => {
+        i.addEventListener('click', () => {
+            if (burger.isActive.value === true) {
+                burger.toggle()
+            }
+        })
+    })
+})
 </script>
 
 <style lang="scss">
