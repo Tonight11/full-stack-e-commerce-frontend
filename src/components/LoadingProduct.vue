@@ -29,9 +29,9 @@ import { useMediaQuery } from '@vueuse/core'
 const isLargeScreen = useMediaQuery('(min-width: 768px)')
 const total = computed(() => {
     if (isLargeScreen) {
-        return 6
+        return 8
     } else {
-        return 3
+        return 4
     }
 })
 </script>
