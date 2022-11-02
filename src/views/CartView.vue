@@ -15,6 +15,17 @@
 import AppPage from '@/UI/AppPage'
 import RequestCartForm from '@/components/request/RequestCartForm.vue'
 import RequestCart from '@/components/request/RequestCart'
+import { onMounted, onUnmounted } from 'vue'
+import { useHandleLink } from '@/use/useHandleLink'
+const handle = useHandleLink()
+
+onMounted(() => {
+    handle.add()
+})
+
+onUnmounted(() => {
+    handle.remove()
+})
 </script>
 
 <style lang="scss">

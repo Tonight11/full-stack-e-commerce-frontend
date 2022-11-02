@@ -18,13 +18,22 @@ import SectionAdvantage from '@/sections/SectionAdvantage'
 import SectionSubscribe from '@/sections/SectionSubscribe'
 import SectionProduct from '@/sections/SectionProduct'
 import SectionContact from '@/sections/SectionContact'
+import { onMounted, onUnmounted } from 'vue'
+import { useHandleLink } from '@/use/useHandleLink'
 
-import { onMounted } from 'vue'
 import { useProductStore } from '@/store/productStore'
+
 const productStore = useProductStore()
+const handle = useHandleLink()
 
 onMounted(async () => {
     await productStore.getProducts()
+
+    handle.add()
+})
+
+onUnmounted(() => {
+    handle.remove()
 })
 </script>
 

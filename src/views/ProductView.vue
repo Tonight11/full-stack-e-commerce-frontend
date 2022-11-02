@@ -29,10 +29,12 @@ import AppLoader from '@/UI/AppLoader.vue'
 import RequestSidebar from '@/components/request/RequestSidebar'
 import { useProductItem } from '@/use/useProduct'
 import { useProductStore } from '@/store/productStore'
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { useDark } from '@vueuse/core'
 import VPagination from '@hennge/vue3-pagination'
 import '@hennge/vue3-pagination/dist/vue3-pagination.css'
+import { useHandleLink } from '@/use/useHandleLink'
+const handle = useHandleLink()
 
 const isDark = useDark()
 const pagColor = isDark.value ? '#fff500' : '#bd00ff'
@@ -42,6 +44,12 @@ const productStore = useProductStore()
 
 onMounted(async () => {
     await productStore.getProducts()
+
+    handle.add()
+})
+
+onUnmounted(() => {
+    handle.remove()
 })
 
 const updateHandler = async (e) => {
