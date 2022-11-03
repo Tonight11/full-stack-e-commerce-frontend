@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView'
 import { useAuthStore } from '@/store/authStore'
 import { useAlertStore } from '@/store/alertStore'
+import { useBurgerStore } from '@/store/burgerStore'
 
 const routes = [
     {
@@ -86,13 +87,34 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(process.env.BASE_URL),
     routes,
+    scrollBehavior(to, from, savedPosition) {
+        const burgerMenu = useBurgerStore()
+
+        if (burgerMenu.isActive === true) {
+            burgerMenu.toggle()
+        }
+
+        if (to.hash) {
+            return {
+                el: to.hash,
+                behavior: 'smooth',
+                top: 70,
+            }
+        }
+
+        if (savedPosition) {
+            return savedPosition
+        } else {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve({ left: 0, top: 0 })
+                }, 50)
+            })
+        }
+    },
 })
 
 router.beforeEach((to, from, next) => {
-    if (to.name) {
-        window.scrollTo(0, 0)
-    }
-
     const auth = to.meta.auth
     const authStore = useAuthStore()
     const alert = useAlertStore()

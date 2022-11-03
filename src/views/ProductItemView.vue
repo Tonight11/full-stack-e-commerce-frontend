@@ -76,11 +76,10 @@ import AppPage from '@/UI/AppPage'
 import AppButton from '@/UI/AppButton'
 import AppLoader from '@/UI/AppLoader.vue'
 import BreadcrumbBack from '@/components/BreadcrumbBack'
-import { computed, defineProps, onMounted, onUnmounted, ref } from 'vue'
+import { computed, defineProps, onMounted, ref } from 'vue'
 import { useProductStore } from '@/store/productStore'
 import { useCartStore } from '@/store/cartStore'
-import { useHandleLink } from '@/use/useHandleLink'
-const handle = useHandleLink()
+
 
 const props = defineProps(['id'])
 
@@ -107,12 +106,10 @@ onMounted(async () => {
         console.log(e)
     }
 
-    handle.add()
+
 })
 
-onUnmounted(() => {
-    handle.remove()
-})
+
 </script>
 
 <style lang="scss" scoped>

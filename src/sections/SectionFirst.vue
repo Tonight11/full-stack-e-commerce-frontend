@@ -15,8 +15,6 @@
                     <app-button
                         text="Explore"
                         ref="btn"
-                        href="#catalog"
-                        v-smooth-scroll
                     ></app-button>
                 </div>
                 <div class="first__bg">

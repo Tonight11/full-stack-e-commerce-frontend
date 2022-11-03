@@ -7,20 +7,13 @@
             v-if="page === 'home'"
         >
             <li>
-                <a href="#best" v-smooth-scroll class="nav__link">Trending</a>
+                <a class="nav__link" href="#best">Trending</a>
             </li>
             <li>
-                <a href="#advan" v-smooth-scroll class="nav__link"
-                    >Advantages</a
-                >
+                <a class="nav__link" href="#advan">Advantages</a>
             </li>
             <li>
-                <a
-                    href="#contact"
-                    v-smooth-scroll="{ offset: 60 }"
-                    class="nav__link"
-                    >Contact</a
-                >
+                <a class="nav__link" href="#contact">Contact</a>
             </li>
             <li>
                 <router-link class="nav__link" :to="{ name: 'product' }"
