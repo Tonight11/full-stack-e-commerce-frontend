@@ -73,6 +73,9 @@ onUpdated(() => {
     @media screen and (max-width: 768px) {
         flex: auto;
     }
+    @media screen and (max-width: 727px) {
+        padding: 25px;
+    }
     &__row {
         max-height: 400px;
         overflow-y: scroll;
@@ -83,6 +86,10 @@ onUpdated(() => {
         justify-content: space-between;
         gap: 25px;
         margin-bottom: 25px;
+
+        @media screen and (max-width: 727px) {
+            flex-direction: column;
+        }
     }
 
     &__info {

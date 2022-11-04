@@ -80,7 +80,6 @@ import { computed, defineProps, onMounted, ref } from 'vue'
 import { useProductStore } from '@/store/productStore'
 import { useCartStore } from '@/store/cartStore'
 
-
 const props = defineProps(['id'])
 
 const productStore = useProductStore()
@@ -105,11 +104,7 @@ onMounted(async () => {
     } catch (e) {
         console.log(e)
     }
-
-
 })
-
-
 </script>
 
 <style lang="scss" scoped>
@@ -204,12 +199,22 @@ onMounted(async () => {
     &__content {
         display: flex;
         gap: 25px;
+
+        @media screen and (max-width: 727px) {
+            flex-direction: column;
+        }
     }
 
     &__img {
         max-width: 420px;
         min-height: 500px;
         object-fit: cover;
+
+        @media screen and (max-width: 727px) {
+            min-height: 100%;
+            max-width: 100%;
+            max-height: 300px;
+        }
     }
 
     &__info {
@@ -217,6 +222,11 @@ onMounted(async () => {
         flex-direction: column;
         flex: 0 1 50%;
         width: 50%;
+
+		@media screen and (max-width: 727px) {
+            flex: auto;
+			width: 100%;
+        }
     }
 
     &__size-items {

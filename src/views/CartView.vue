@@ -30,7 +30,7 @@ import RequestCart from '@/components/request/RequestCart'
         justify-content: space-between;
 
         @media screen and (max-width: 768px) {
-            flex-direction: column;
+            flex-direction: column-reverse;
         }
     }
 }
