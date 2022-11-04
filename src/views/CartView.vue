@@ -15,8 +15,6 @@
 import AppPage from '@/UI/AppPage'
 import RequestCartForm from '@/components/request/RequestCartForm.vue'
 import RequestCart from '@/components/request/RequestCart'
-
-
 </script>
 
 <style lang="scss">
@@ -30,6 +28,10 @@ import RequestCart from '@/components/request/RequestCart'
         display: flex;
         gap: 100px;
         justify-content: space-between;
+
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+        }
     }
 }
 
@@ -39,6 +41,10 @@ import RequestCart from '@/components/request/RequestCart'
     flex-direction: column;
     justify-content: space-between;
     gap: 20px;
+
+    @media screen and (max-width: 768px) {
+        flex: auto;
+    }
 
     &__title {
         font-size: 32px;

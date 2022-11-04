@@ -70,6 +70,9 @@ onUpdated(() => {
     display: flex;
     flex-direction: column;
 
+    @media screen and (max-width: 768px) {
+        flex: auto;
+    }
     &__row {
         max-height: 400px;
         overflow-y: scroll;

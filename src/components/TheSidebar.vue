@@ -20,6 +20,10 @@ defineProps({
     background: #ffffff;
     box-shadow: 0px 4px 35px 6px rgba(0, 0, 0, 0.1);
 
+    @media screen and (max-width: 969px) {
+        max-width: 100%;
+    }
+
     @media screen and (max-width: 900px) {
         max-width: 100%;
     }

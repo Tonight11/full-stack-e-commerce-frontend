@@ -62,6 +62,10 @@ html.dark {
         padding: 50px 0;
         display: flex;
         gap: 50px;
+
+        @media screen and (max-width: 969px) {
+            flex-direction: column;
+        }
     }
 
     &__link {
