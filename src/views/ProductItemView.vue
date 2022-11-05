@@ -7,7 +7,7 @@
                 <div class="single-product__content">
                     <img
                         class="single-product__img"
-                        :src="server + product.picture"
+                        :src="product.picture.url"
                         alt="product"
                     />
                     <div class="single-product__info">
@@ -89,7 +89,6 @@ const cartProducts = computed(() =>
     cartStore.products.find((item) => item._id === props.id)
 )
 const product = ref()
-const server = process.env.VUE_APP_SERVER
 
 const deleteCart = (product) => {
     cartStore.deleteFromCart(product)
@@ -223,9 +222,9 @@ onMounted(async () => {
         flex: 0 1 50%;
         width: 50%;
 
-		@media screen and (max-width: 727px) {
+        @media screen and (max-width: 727px) {
             flex: auto;
-			width: 100%;
+            width: 100%;
         }
     }
 

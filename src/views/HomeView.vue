@@ -20,12 +20,12 @@ import SectionProduct from '@/sections/SectionProduct'
 import SectionContact from '@/sections/SectionContact'
 import { onMounted } from 'vue'
 
-// import { useProductStore } from '@/store/productStore'
+import { useProductStore } from '@/store/productStore'
 
-// const productStore = useProductStore()
+const productStore = useProductStore()
 
 onMounted(async () => {
-    // await productStore.getProducts()
+    await productStore.getProducts()
 })
 </script>
 

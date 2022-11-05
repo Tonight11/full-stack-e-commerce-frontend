@@ -27,7 +27,7 @@
                         <span>$</span>
                     </div>
                 </div>
-                <img class="cart__img" :src="server + item.picture" alt="" />
+                <img class="cart__img" :src="item.picture.url" alt="" />
             </div>
         </div>
         <div class="cart-total">
@@ -46,7 +46,7 @@ import { onUpdated } from 'vue'
 import MazInputNumber from 'maz-ui/components/MazInputNumber'
 import { useCartSum } from '@/use/useCartTotalSum'
 
-const server = process.env.VUE_APP_SERVER
+
 const cartSum = useCartSum()
 
 onUpdated(() => {

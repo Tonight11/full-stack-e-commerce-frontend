@@ -49,7 +49,7 @@
                     >
                         X
                     </div>
-                    <img id="file-ip-1-preview" :src="server + item?.picture" />
+                    <img id="file-ip-1-preview" :src="item?.picture?.url" />
                 </div>
             </div>
         </div>
@@ -69,7 +69,6 @@ const router = useRouter()
 
 const upload = useUploadStore()
 const productStore = useProductStore()
-const server = process.env.VUE_APP_SERVER
 const props = defineProps({
     item: {
         type: Object,

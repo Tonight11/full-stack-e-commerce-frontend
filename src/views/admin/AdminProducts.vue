@@ -14,7 +14,7 @@
                     class="product-item__item product-page__item product-admin-item"
                 >
                     <div class="product-page__img product-admin__img">
-                        <img :src="server + item.picture" alt="product-item" />
+                        <img :src="item.picture.url" alt="product-item" />
                     </div>
                     <div class="product-item__info">
                         <div class="product-item__name">
@@ -57,8 +57,6 @@ import { useProductStore } from '@/store/productStore'
 import { computed, onMounted } from 'vue'
 import AppButton from '@/UI/AppButton'
 import AppLoader from '@/UI/AppLoader.vue'
-
-const server = process.env.VUE_APP_SERVER
 const productStore = useProductStore()
 const products = computed(() => productStore.allProducts)
 

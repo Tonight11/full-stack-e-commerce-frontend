@@ -7,7 +7,7 @@
         >
             <div class="product-item__item" v-if="idx + 1 <= total">
                 <div class="product-item__img">
-                    <img :src="server + item.picture" alt="product-item" />
+                    <img :src="item.picture.url" alt="product-item" />
                 </div>
                 <div class="product-item__info">
                     <div class="product-item__category">
@@ -68,8 +68,6 @@ const isLargeScreen = useMediaQuery('(min-width: 768px)')
 
 const productUse = useProductItem()
 
-const server = process.env.VUE_APP_SERVER
-
 const product = computed(() => productUse.allItems)
 const total = computed(() => {
     if (isLargeScreen.value) {
@@ -86,6 +84,7 @@ const total = computed(() => {
     flex-wrap: wrap;
     margin: 0 -20px;
     row-gap: 40px;
+    flex: 1;
 
     &__column {
         flex: 0 1 25%;

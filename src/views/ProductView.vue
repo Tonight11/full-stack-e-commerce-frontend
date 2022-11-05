@@ -7,14 +7,17 @@
                 </the-sidebar>
                 <div class="product__main">
                     <app-loader v-if="product.value.length === 0"></app-loader>
-                    <the-product v-else :products="product"></the-product>
-                    <v-pagination
-                        v-model="page"
-                        :pages="totalPage"
-                        :range-size="1"
-                        :active-color="pagColor"
-                        @update:modelValue="updateHandler"
-                    />
+                    <template v-else-if="product.value.length > 0">
+                        <the-product :products="product"></the-product>
+                        <v-pagination
+                            v-model="page"
+                            :pages="totalPage"
+                            :range-size="1"
+                            :active-color="pagColor"
+                            @update:modelValue="updateHandler"
+                        />
+                    </template>
+                    <div v-else>Продуктов пока нет</div>
                 </div>
             </div>
         </app-page>
@@ -62,10 +65,6 @@ const totalPage = computed(() => {
     padding: 25px 0;
     display: flex;
     gap: 50px;
-
-    &__main {
-        flex: 1;
-    }
 
     @media screen and (max-width: 900px) {
         flex-direction: column;

@@ -8,7 +8,7 @@
             >
                 <div class="product-item__item product-page__item">
                     <div class="product-page__img">
-                        <img :src="server + item.picture" alt="product-item" />
+                        <img :src="item.picture.url" alt="product-item" />
                     </div>
                     <div class="product-item__info">
                         <div class="product-item__category">
@@ -71,7 +71,6 @@ defineProps({
     products: Array,
 })
 
-const server = process.env.VUE_APP_SERVER
 </script>
 
 <style lang="scss">

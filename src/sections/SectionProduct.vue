@@ -32,6 +32,10 @@ const load = useLoaderStore()
 .product {
     padding-top: 140px;
 
+    &__main {
+        flex: 1;
+    }
+
     @media screen and (max-width: 827px) {
         padding-top: 50px;
     }
