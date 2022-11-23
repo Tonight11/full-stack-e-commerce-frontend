@@ -70,7 +70,6 @@ import { defineProps } from 'vue'
 defineProps({
     products: Array,
 })
-
 </script>
 
 <style lang="scss">

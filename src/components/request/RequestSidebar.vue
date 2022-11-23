@@ -14,7 +14,7 @@ const filter = useFilterStore()
 
 // initial filter status
 const searchValue = ref('')
-const range = ref([1, 100])
+const range = ref(JSON.parse(localStorage.getItem('rangeProduct')))
 
 // changing a SEARCH value in a store
 watch(

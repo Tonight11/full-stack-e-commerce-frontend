@@ -40,11 +40,23 @@ export function useProductItem() {
     const items = computed(() => productStore.products)
     const allItems = computed(() => productStore.allProducts)
 
+    const price = computed(() =>
+        items.value.map((i) => {
+            return parseInt(i.price)
+        })
+    )
+
+    const maxPrice = computed(() => Math.max(...price.value))
+
     // when we leave the product page all filter settings in store backs to default
     const beforeLeave = onBeforeRouteLeave((to) => {
         if (to.name === 'product') {
-            filter.range = [0, 100]
+            filter.range = [0, maxPrice.value]
             filter.search = ''
+            localStorage.setItem(
+                'rangeProduct',
+                JSON.stringify([0, maxPrice.value])
+            )
         }
     })
 
@@ -57,5 +69,6 @@ export function useProductItem() {
         items,
         beforeLeave,
         allItems,
+        maxPrice,
     }
 }

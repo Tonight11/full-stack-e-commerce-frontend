@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 export const useFilterStore = defineStore('filter', {
     state: () => ({
         search: '',
-        range: [0, 100],
+        range: JSON.parse(localStorage.getItem('rangeProduct')),
     }),
     getters: {
         result: (state) => state.search,
