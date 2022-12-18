@@ -1,6 +1,6 @@
 # client
 
-## link to web site: https://th-ecommerce.netlify.app
+## link to backend: https://github.com/Tonight11/full-stack-e-commerce-backend
 
 
 ## Project setup
