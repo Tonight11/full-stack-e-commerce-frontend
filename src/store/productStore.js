@@ -37,9 +37,7 @@ export const useProductStore = defineStore('product', {
             const load = useLoaderStore()
             try {
                 load.load = true
-                const { data } = await axios.get(
-                    `/product?page=${this.page}&limit=6`
-                )
+                const { data } = await axios.get(`/product`)
                 this.items = data.results
                 this.total = data.totalProducts
                 this.allItems = data.allProducts
