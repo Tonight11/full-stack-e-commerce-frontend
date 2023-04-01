@@ -2,6 +2,9 @@
 
 ## link to backend: https://github.com/Tonight11/full-stack-e-commerce-backend
 
+# dependencies
+
+VUE_APP_SERVER=link to backend 
 
 ## Project setup
 
