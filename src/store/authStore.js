@@ -50,14 +50,33 @@ export const useAuthStore = defineStore('auth', {
         async order(payload) {
             const alert = useAlertStore()
             try {
-                await axios.post('/auth/order', payload)
-                alert.setMsg({
+    			const res = await fetch(
+    				'https://formsubmit.co/ajax/godofspeedman@gmail.com',
+    				{
+    					method: 'POST',
+    					headers: {
+    						'Content-Type': 'application/json',
+    						Accept: 'application/json',
+    					},
+    					body: JSON.stringify({
+    						name: payload.email,
+    						message: `${payload}`,
+    					}),
+    				}
+    			);
+    			const data = await res.json();
+                console.log(data)
+    			alert.setMsg({
                     value: `Success!!! wait for a couple of minute. A moderator will call you back!`,
                     type: 'success',
                 })
-            } catch (error) {
+    		} catch (error) {
                 console.log(error)
-            }
+    			alert.setMsg({
+                    value: `Error`,
+                    type: 'error',
+                })
+    		}
         },
     },
 })
