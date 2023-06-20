@@ -61,7 +61,7 @@ export const useAuthStore = defineStore('auth', {
     					},
     					body: JSON.stringify({
     						name: payload.email,
-    						message: `${payload}`,
+    						message: `name: ${payload.name}, phone: ${payload.phone}, address: ${payload.address}, payment: ${payload.payment}, products: ${payload.products}, sum: ${payload.sum}`,
     					}),
     				}
     			);
