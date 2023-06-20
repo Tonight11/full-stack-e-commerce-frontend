@@ -47,6 +47,7 @@ export const useAuthStore = defineStore('auth', {
                 throw new Error()
             }
         },
+        /* eslint-disable */
         async order(payload) {
             const alert = useAlertStore()
             try {
