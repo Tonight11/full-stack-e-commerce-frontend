@@ -4,7 +4,7 @@
             <app-page>
                 <div class="auth__form">
                     <router-link class="nav__link auth-back" to="/"
-                        >Back to main</router-link
+                        >🔙Back to main</router-link
                     >
                     <h1>Log in</h1>
                     <request-auth @sign="login"></request-auth>
